@@ -5,11 +5,16 @@ import sitemap from '@astrojs/sitemap';
 import Unocss from 'unocss/astro';
 import { VitePWA } from "vite-plugin-pwa";
 import wyw from '@wyw-in-js/vite';
+import node from "@astrojs/node";
 
 import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'server',
+  adapter: node({
+    mode: "standalone"
+  }),
   site: 'https://example.com',
   integrations: [mdx(), sitemap(), react(), Unocss({
     injectReset: true // or a path to the reset file

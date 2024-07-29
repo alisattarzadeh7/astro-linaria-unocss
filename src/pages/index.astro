@@ -1,5 +1,10 @@
 ---
+
+export const prerender = false
+
+
 import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
 import {SITE_TITLE, SITE_DESCRIPTION} from '../consts';
 import LinariaButton from "../components/react/LinariaButton";
 import FlyingButton from "../components/react/FlyingButton";
@@ -17,11 +22,13 @@ import MainLayout from "../layouts/MainLayout.astro"
 
 </head>
 <body>
+<Header/>
 <MainLayout>
+
 <div class="mt-1">
     <div class="i-mdi-alarm"></div>
     <VueButton client:load />
-    <FlyingButton client:load />
+    <FlyingButton  />
 
 
     <br>
