@@ -1,0 +1,99 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import {SITE_TITLE, SITE_DESCRIPTION} from '../consts';
+import LinariaButton from "../components/react/LinariaButton";
+import FlyingButton from "../components/react/FlyingButton";
+import VueButton from "../components/vue/VueButton.vue"
+import MainLayout from "../layouts/MainLayout.astro"
+
+
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+
+</head>
+<body>
+<MainLayout>
+<div class="mt-1">
+    <div class="i-mdi-alarm"></div>
+    <VueButton client:load />
+    <FlyingButton client:load />
+
+
+    <br>
+    Attributify Mode
+
+    <button class="bg-blue-400 hover:bg-blue-500 text-sm text-white font-mono font-light py-2 px-4 rounded border-2 border-blue-200 dark:bg-blue-500 dark:hover:bg-blue-600">
+        Button
+    </button>
+
+    <button
+            bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
+            text="sm white"
+            font="mono light"
+            p="y-2 x-4"
+            border="2 rounded blue-200"
+    >
+        Attributified Button
+    </button>
+
+
+    <br>
+    Prefix self-referencing
+
+    <button class="border border-red">
+        Button
+    </button>
+
+    <button border="~ red">
+        Button
+    </button>
+    <br>
+    Valueless attributify
+
+    <div class="m-2 rounded text-teal-400">
+        hi
+    </div>
+
+    <div m-2 rounded text-teal-400>
+        hi
+    </div>
+
+    Variant group transformer
+
+    <div class="hover:(bg-gray-400 font-medium) font-(light mono)">
+        bye
+    </div>
+
+    <div class="hover:bg-gray-400 hover:font-medium font-light font-mono">
+        bye
+    </div>
+
+    <br>
+
+
+
+</div>
+<div style="height:1000px;"></div>
+
+<LinariaButton client:visible>
+    hello
+</LinariaButton>
+</MainLayout>
+</body>
+</html>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch(error => {
+                console.log('Service Worker registration failed:', error);
+            });
+        });
+    }
+</script>
