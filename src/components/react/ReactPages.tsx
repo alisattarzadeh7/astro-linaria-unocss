@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
-import React from 'react';
+import React, {Suspense} from 'react';
 import { useRoutes, Link, BrowserRouter } from "react-router-dom";
-
+import ReactApplication from "remote_app/ReactApplication"
 
 const routeBase = '/routing'
 
@@ -23,6 +23,9 @@ export default function ReactPages(props:{url:string}) {
     return (
        <div>
            asdf
+           <ReactApplication>
+               remote button
+           </ReactApplication>
            <BrowserRouter>
                <h1>The rest of this page is rendered by React </h1>
                <Routes />

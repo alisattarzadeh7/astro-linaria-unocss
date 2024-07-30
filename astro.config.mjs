@@ -6,6 +6,7 @@ import Unocss from 'unocss/astro';
 import { VitePWA } from "vite-plugin-pwa";
 import wyw from '@wyw-in-js/vite';
 import node from "@astrojs/node";
+import federation from "@originjs/vite-plugin-federation";
 
 import vue from "@astrojs/vue";
 
@@ -20,7 +21,13 @@ export default defineConfig({
     injectReset: true // or a path to the reset file
   }), vue()],
   vite: {
-    plugins: [VitePWA({
+    plugins: [ federation({
+      name: 'host-app',
+      remotes: {
+        remote_app: "http://localhost:4173/assets/remoteEntry.js",
+      },
+      shared: ['react']
+    }),VitePWA({
       registerType: "autoUpdate",
       manifest: {
         name: "Astro PWA Starter",

@@ -1,5 +1,5 @@
 ---
-
+import ReactPages from "../components/react/ReactPages";
 export const prerender = false
 
 
@@ -25,8 +25,11 @@ import MainLayout from "../layouts/MainLayout.astro"
 <Header/>
 <MainLayout>
 
+    <ReactPages client:only="react" />
+
 <div class="mt-1">
     <div class="i-mdi-alarm"></div>
+
     <VueButton client:load />
     <FlyingButton client:load />
 
