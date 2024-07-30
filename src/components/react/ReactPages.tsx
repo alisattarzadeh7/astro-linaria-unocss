@@ -1,8 +1,6 @@
 /** @jsxImportSource react */
 import React from 'react';
 import { useRoutes, Link, BrowserRouter } from "react-router-dom";
-import {StaticRouter} from "react-router-dom/server";
-import Astro from "astro"
 
 
 const routeBase = '/routing'
@@ -17,21 +15,20 @@ export const routes = [
     { path: rootRoute + "/page1", element: <Page1 /> },
 ];
 
-// this works fine with react router
-function GoToSolid() {
-    return <a href={`${routeBase}/solid`}>Go To Solid</a>;
-}
-
 function GoToHome() {
     return <a href={routeBase + '/'}>Go To Home</a>
 }
 
 export default function ReactPages(props:{url:string}) {
     return (
-        <BrowserRouter>
-            <h1>The rest of this page is rendered by React {Astro.url}</h1>
-            <Routes />
-        </BrowserRouter>
+       <div>
+           asdf
+           <BrowserRouter>
+               <h1>The rest of this page is rendered by React </h1>
+               <Routes />
+           </BrowserRouter>
+
+       </div>
     );
 }
 

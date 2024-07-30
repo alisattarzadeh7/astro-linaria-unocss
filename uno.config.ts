@@ -17,7 +17,7 @@ export default defineConfig({
     presets: [
         presetUno(),
         presetTagify(),
-        presetAttributify({ /* preset options */ }),
+        presetAttributify(),
         presetIcons(),
     ],
 })

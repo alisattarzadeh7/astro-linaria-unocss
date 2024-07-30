@@ -7,7 +7,7 @@ const counter = ref(0)
 </script>
 
 <template>
-  <button @click="counter = counter + 1" class="bg-green">I'm a vue button with counter {{counter}}</button>
+  <button @click="counter = counter + 1" class="bg-green mt-1">I'm a vue button with counter {{counter}}</button>
 </template>
 
 <style scoped>

@@ -8,7 +8,6 @@ export const { ThemeProvider, withTheme, useTheme } = createTheming({
 });
 
 
-
 const LinariaThemeProvider:React.FC<PropsWithChildren> = ({children})=>{
     return <ThemeProvider>{children}</ThemeProvider>
 }
