@@ -24,7 +24,7 @@ export default defineConfig({
     plugins: [ federation({
       name: 'host-app',
       remotes: {
-        remote_app: "http://localhost:4173/assets/remoteEntry.js",
+        remote_app: "http://localhost:5002/assets/remoteEntry.js",
       },
       shared: ['react']
     }),VitePWA({

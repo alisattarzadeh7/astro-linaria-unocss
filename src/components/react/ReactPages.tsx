@@ -1,18 +1,15 @@
 /** @jsxImportSource react */
-import React, {Suspense} from 'react';
+import React from 'react';
 import { useRoutes, Link, BrowserRouter } from "react-router-dom";
-import ReactApplication from "remote_app/ReactApplication"
+const routeBase = '/client'
 
-const routeBase = '/routing'
-
-let rootRoute = routeBase + "/react";
 
 export const routes = [
     {
-        path: rootRoute,
+        path: routeBase,
         element: <Root />,
     },
-    { path: rootRoute + "/page1", element: <Page1 /> },
+    { path: routeBase + "/page1", element: <Page1 /> },
 ];
 
 function GoToHome() {
@@ -22,14 +19,6 @@ function GoToHome() {
 export default function ReactPages(props:{url:string}) {
     return (
        <div>
-           asdf
-           <ReactApplication>
-               remote button
-           </ReactApplication>
-           <BrowserRouter>
-               <h1>The rest of this page is rendered by React </h1>
-               <Routes />
-           </BrowserRouter>
 
        </div>
     );
@@ -45,11 +34,8 @@ function Root() {
         <div>
             <h1>Root Page</h1>
             <ul>
-                <li>
+                <li style={{color:'blue'}}>
                     <Link to={routes[1].path} >Go to Page 1</Link>
-                </li>
-                <li>
-                    <GoToHome />
                 </li>
             </ul>
         </div>
@@ -61,11 +47,8 @@ function Page1() {
         <div>
             <h1>Page 1</h1>
             <ul>
-                <li>
+                <li style={{color:'blue'}}>
                     <Link to={routes[0].path}>Got to Root</Link>
-                </li>
-                <li>
-                    <GoToHome />
                 </li>
             </ul>
         </div>

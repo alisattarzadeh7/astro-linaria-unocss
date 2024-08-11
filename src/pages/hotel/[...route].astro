@@ -1,20 +1,15 @@
 ---
 
- import ReactPages from "../../components/react/ReactPages";
 
 import MainLayout from "../../layouts/MainLayout.astro";
-import Header from "../../components/Header.astro";
- import React from "react";
 
 const res = await fetch(`https://www.alibaba.ir/${Astro.url.pathname}`)
 const text =await res.text()
-console.log({res:text})
 
 ---
 
 
 <MainLayout>
-    <Header/>
     <style>
         .alibaba-hotel-page {
             #header{
@@ -25,8 +20,7 @@ console.log({res:text})
     <div class="mt-5">
 
         <div class=" w-full alibaba-hotel-page flex items-center">
-            <!--<Fragment set:html={text}/>-->
+            <Fragment set:html={text}/>
         </div>
-        <ReactPages client:only="react" />
     </div>
 </MainLayout>

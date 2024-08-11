@@ -2,6 +2,7 @@
 
 
 import LinariaThemeProvider from "../components/react/LinariaThemeProvider";
+import Header from "../components/Header.astro";
 
 ---
 
@@ -9,6 +10,7 @@ import LinariaThemeProvider from "../components/react/LinariaThemeProvider";
 
 <div>
     <script src="/src/pwa.ts"></script>
+    <Header/>
     <LinariaThemeProvider client:load>
         <slot />
     </LinariaThemeProvider>

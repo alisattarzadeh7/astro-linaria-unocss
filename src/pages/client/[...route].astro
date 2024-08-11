@@ -1,0 +1,17 @@
+---
+
+import ReactPages from "../../components/react/ReactPages";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+console.log({ReactPagesTest:ReactPages})
+
+
+---
+
+<MainLayout>
+
+
+<ReactPages client:only="react" />
+
+
+</MainLayout>
