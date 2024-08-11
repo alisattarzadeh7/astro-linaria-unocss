@@ -1,98 +1,135 @@
 ---
 import ReactPages from "../components/react/ReactPages";
-export const prerender = false
+export const prerender = false;
 
-
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import {SITE_TITLE, SITE_DESCRIPTION} from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import LinariaButton from "../components/react/LinariaButton";
 import FlyingButton from "../components/react/FlyingButton";
-import VueButton from "../components/vue/VueButton.vue"
-import MainLayout from "../layouts/MainLayout.astro"
-
-
+import VueButton from "../components/vue/VueButton.vue";
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <!doctype html>
 <html lang="en">
-<head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
-    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script> -->
+  </head>
+  <body>
+    <Header />
+    <MainLayout>
+      <div class="p-16.5">
+        <VueButton client:load />
+        <div class="title">What is UnoCSS?</div>
+        <div class="subtitle">
+          UnoCSS is the instant atomic CSS engine, that is designed to be
+          flexible and extensible. The core is un-opinionated and all the CSS
+          utilities are provided via presets.
+        </div>
+      </div>
+      <div class="code p-50 rounded-full text-brand-secondary">
+        <span class="dot"></span>
+        Rules : [m-1 : margin: 1px]
+        <br />
+        <span class="dot"></span>
+        [/^m-([\.\d]+)$/, ([_, num]) => (margin: `${"num"}px` )],
+      </div>
 
-</head>
-<body>
-<Header/>
-<MainLayout>
+      <div class="title">Dynamic Shortcut</div>
+      <button class="btn-green"> Green Button </button>
+      <button class="btn-red"> Red Button </button>
+      <button class="btn-blue hover:m-2"> blue Button </button>
+      <div class="hover:(bg-gray-400 m-2) font-(light mono)">Hi There</div>
+      <div class="hover:(bg-gray-400 m-2) font-(light mono)">Hi There</div>
+      <div class="m-120">Hi There</div>
 
-    <ReactPages client:only="react" />
-
-<div class="mt-1">
-    <div class="i-mdi-alarm"></div>
-
-    <VueButton client:load />
-    <FlyingButton client:load />
-
-
-    <br>
-    Attributify Mode
-
-    <button class="bg-blue-400 hover:bg-blue-500 text-sm text-white font-mono font-light py-2 px-4 rounded border-2 border-blue-200 dark:bg-blue-500 dark:hover:bg-blue-600">
+      Attributify Mode
+      <button
+        class="bg-blue-400 hover:bg-blue-500 text-sm text-white font-mono font-light py-2 px-4 rounded border-2 border-blue-200 dark:bg-blue-500 dark:hover:bg-blue-600"
+      >
         Button
-    </button>
-
-    <button
-            bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
-            text="sm white"
-            font="mono light"
-            p="y-2 x-4"
-            border="2 rounded blue-200"
-    >
-        Attributified Button
-    </button>
-
-
-    <br>
-    Prefix self-referencing
-
-    <button class="border border-red">
+      </button>
+      👉🏻
+      <button
+        bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
+        text="sm white"
+        font="mono light"
+        p="y-2 x-4"
+        border="2 rounded blue-200"
+      >
         Button
-    </button>
+      </button>
 
-    <button border="~ red">
-        Button
-    </button>
-    <br>
-    Valueless attributify
+      <button class="border border-red"> Button </button>
+      <button border="~ red"> Button </button>
 
-    <div class="m-2 rounded text-teal-400">
-        hi
-    </div>
+      <article class="text-base prose prose-truegray xl:text-۳xl">
+        markdown
+        <p class="not-prose">Some text</p>
+      </article>
+      <ReactPages client:only="react" />
 
-    <div m-2 rounded text-teal-400>
-        hi
-    </div>
+      <div class="flex flex-col items-center mx-auto w-[500px] p-4 gap-4">
+        <div class="i-mdi-alarm w-8 h-8"></div>
 
-    Variant group transformer
+        <VueButton client:load />
+        <FlyingButton client:load />
 
-    <div class="hover:(bg-gray-400 font-medium) font-(light mono)">
-        bye
-    </div>
+        <br />
+        <div class="title">Attributify Mode</div>
 
-    <div class="hover:bg-gray-400 hover:font-medium font-light font-mono">
-        bye
-    </div>
+        <button
+          class="bg-blue-400 hover:bg-blue-500 text-sm text-white font-mono font-light py-2 px-4 rounded border-2 border-blue-200 dark:bg-blue-500 dark:hover:bg-blue-600"
+        >
+          Button
+        </button>
 
-    <br>
+        <div class="p-9.5">
+          UnoCSS only generates padding whenever you use it.
+        </div>
 
+        <button
+          bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
+          text="sm white"
+          font="mono light"
+          p="y-2 x-4"
+          border="2 rounded blue-200"
+        >
+          Attributified Button
+        </button>
 
+        <div class="dot"></div>
+        <br />
+        Prefix self-referencing
 
-</div>
-<div style="height:1000px;"></div>
+        <button class="border border-red"> Button </button>
 
-<LinariaButton client:visible>
-    hello
-</LinariaButton>
-</MainLayout>
-</body>
+        <button border="~ red"> Button </button>
+        <br />
+        Valueless attributify
+
+        <div class="m-2 rounded text-teal-400">hi</div>
+
+        <div m-2 rounded text-teal-400>hi</div>
+
+        Variant group transformer
+
+        <div class="hover:(bg-gray-400 font-medium) font-(light mono)">bye</div>
+
+        <div class="hover:bg-gray-400 hover:font-medium font-light font-mono">
+          bye
+        </div>
+
+        <br />
+      </div>
+      <div style="height:1000px;"></div> -->
+
+      <!-- <LinariaButton client:visible> hello </LinariaButton>
+    </MainLayout>
+  </body>
+</html>
+--></MainLayout
+    ></body>
 </html>
