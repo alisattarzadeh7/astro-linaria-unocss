@@ -1,5 +1,4 @@
 ---
-import ReactPages from "../components/react/ReactPages";
 export const prerender = false;
 
 import BaseHead from "../components/BaseHead.astro";
@@ -9,17 +8,24 @@ import LinariaButton from "../components/react/LinariaButton";
 import FlyingButton from "../components/react/FlyingButton";
 import VueButton from "../components/vue/VueButton.vue";
 import MainLayout from "../layouts/MainLayout.astro";
+import ReactRemoteApp from "../components/react/ReactRemoteApp";
+
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script> -->
+     <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
   </head>
   <body>
-    <Header />
-    <MainLayout>
+
+  <MainLayout>
+    <a href="/blog" data-astro-prefetch>
+      sadf
+    </a>
+      <ReactRemoteApp client:only="react"  />
       <div class="p-16.5">
         <VueButton client:load />
         <div class="title">What is UnoCSS?</div>
@@ -69,7 +75,6 @@ import MainLayout from "../layouts/MainLayout.astro";
         markdown
         <p class="not-prose">Some text</p>
       </article>
-      <ReactPages client:only="react" />
 
       <div class="flex flex-col items-center mx-auto w-[500px] p-4 gap-4">
         <div class="i-mdi-alarm w-8 h-8"></div>
@@ -124,9 +129,10 @@ import MainLayout from "../layouts/MainLayout.astro";
 
         <br />
       </div>
-      <div style="height:1000px;"></div> -->
+      <div style="height:1000px;"></div>
 
-      <!-- <LinariaButton client:visible> hello </LinariaButton>
+      <LinariaButton client:visible> hello </LinariaButton>
+      <!--
     </MainLayout>
   </body>
 </html>

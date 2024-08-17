@@ -1,6 +1,7 @@
 /** @jsxImportSource react */
 import React from 'react';
 import { useRoutes, Link, BrowserRouter } from "react-router-dom";
+
 const routeBase = '/client'
 
 
@@ -12,14 +13,14 @@ export const routes = [
     { path: routeBase + "/page1", element: <Page1 /> },
 ];
 
-function GoToHome() {
-    return <a href={routeBase + '/'}>Go To Home</a>
-}
 
 export default function ReactPages(props:{url:string}) {
     return (
        <div>
-
+           <BrowserRouter>
+               <h1>The rest of this page is rendered by React </h1>
+               <Routes />
+           </BrowserRouter>
        </div>
     );
 }

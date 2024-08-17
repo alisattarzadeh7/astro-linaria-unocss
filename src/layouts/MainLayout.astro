@@ -3,6 +3,7 @@
 
 import LinariaThemeProvider from "../components/react/LinariaThemeProvider";
 import Header from "../components/Header.astro";
+import { ViewTransitions } from 'astro:transitions';
 
 ---
 
@@ -10,7 +11,9 @@ import Header from "../components/Header.astro";
 
 <div>
     <script src="/src/pwa.ts"></script>
+    <meta charset="utf-8" />
     <Header/>
+    <ViewTransitions />
     <LinariaThemeProvider client:load>
         <slot />
     </LinariaThemeProvider>

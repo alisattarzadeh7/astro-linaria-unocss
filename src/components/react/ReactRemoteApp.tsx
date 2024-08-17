@@ -1,12 +1,18 @@
-
+import React from "react";
 import ReactApplication from "remote_app/ReactApplication"
 
-
-
 const ReactRemoteApp = ()=>{
-    return  <ReactApplication>
+
+
+
+
+
+    return  <div>
         this module is from remote
-    </ReactApplication>
+        <ReactApplication>
+            asdfsfd
+        </ReactApplication>
+    </div>
 
 }
 

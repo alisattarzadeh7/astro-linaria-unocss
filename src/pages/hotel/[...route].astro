@@ -1,5 +1,6 @@
 ---
 
+import ReactPages from "../../components/react/ReactPages";
 
 import MainLayout from "../../layouts/MainLayout.astro";
 
@@ -22,5 +23,6 @@ const text =await res.text()
         <div class=" w-full alibaba-hotel-page flex items-center">
             <Fragment set:html={text}/>
         </div>
+        <ReactPages client:only="react" />
     </div>
 </MainLayout>

@@ -1,6 +1,6 @@
 import {styled} from "@linaria/react";
 
-import {type PropsWithChildren, useEffect, useState} from "react";
+import {type PropsWithChildren, useState} from "react";
 import type {PropsWithTheme} from "../../@types";
 import {useTheme} from "./LinariaThemeProvider.tsx";
 
@@ -20,6 +20,7 @@ const LinariaButton: React.FC<PropsWithChildren> = ({children}) => {
 
     const handleUpdateCounter =()=>{
         setCounter(counter + 1)
+        console.log(counter + 1)
     }
 
     return ( <Button theme={theme} color={`rgb(${counter * 20},${counter * 10},${counter * 5})`} onClick={handleUpdateCounter} >{
