@@ -1,0 +1,16 @@
+---
+import {Astro} from "astro/env";
+import ErrorBoundary from "../ErrorBoundary.astro";
+import ContentSection from "./ContentSection.astro";
+const { url } = Astro.props
+
+
+---
+
+
+<ErrorBoundary>
+    <ContentSection  url={url} />
+    <Fragment  slot="error" >
+            <p>Something went wrong!</p>
+    </Fragment>
+</ErrorBoundary>

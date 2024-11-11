@@ -1,28 +1,17 @@
 ---
-
-import ReactPages from "../../components/react/ReactPages";
+export const prerender = true
 
 import MainLayout from "../../layouts/MainLayout.astro";
+import ProductSection from "../../components/ProductSection/index.astro"
 
-const res = await fetch(`https://www.alibaba.ir/${Astro.url.pathname}`)
-const text =await res.text()
+export async function getStaticPaths() {
+    return [{params:{id:1}}];
+}
+
 
 ---
 
 
-<MainLayout>
-    <style>
-        .alibaba-hotel-page {
-            #header{
-                display: none !important;
-            }
-        }
-    </style>
-    <div class="mt-5">
-
-        <div class=" w-full alibaba-hotel-page flex items-center">
-            <Fragment set:html={text}/>
-        </div>
-        <ReactPages client:only="react" />
-    </div>
+<MainLayout title="hotel" description="description">
+    <ProductSection url={`http://localhost:5173/hotel`}/>
 </MainLayout>

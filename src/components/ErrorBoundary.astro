@@ -1,0 +1,10 @@
+---
+let html
+
+try {
+    html = await Astro.slots.render('default')
+} catch {
+    html = await Astro.slots.render('error')
+}
+---
+<Fragment set:html={html} />

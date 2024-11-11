@@ -6,7 +6,6 @@ import Unocss from 'unocss/astro';
 import { VitePWA } from "vite-plugin-pwa";
 import wyw from '@wyw-in-js/vite';
 import node from "@astrojs/node";
-import federation from "@originjs/vite-plugin-federation";
 
 import vue from "@astrojs/vue";
 
@@ -22,41 +21,11 @@ export default defineConfig({
     injectReset: true // or a path to the reset file
   }), vue()],
   vite: {
-    resolve: {
-      alias: {
-        'custom-loader': new URL('./custom-loader.mjs', import.meta.url).toString()
-      }
-    },
-    optimizeDeps: {
-      esbuildOptions: {
-        plugins: [
-          {
-            name: 'custom-loader',
-            setup(build) {
-              build.onResolve({ filter: /^http:\/\/|https:\/\// }, args => ({
-                path: args.path,
-                namespace: 'custom-loader'
-              }));
 
-              build.onLoad({ filter: /^http:\/\/|https:\/\//, namespace: 'custom-loader' }, async args => ({
-                contents: await fetch(args.path).then(res => res.text()),
-                loader: 'js'
-              }));
-            }
-          }
-        ]
-      }
-    },
     ssr: {
       noExternal: ['path-to-regexp'],
     },
-    plugins: [federation({
-      name: 'host-app',
-      remotes: {
-        remote_app: "http://localhost:5002/assets/remoteEntry.js",
-      },
-      shared: ['react']
-    }),VitePWA({
+    plugins: [VitePWA({
       registerType: "autoUpdate",
       manifest: {
         name: "Astro PWA Starter",
